@@ -1,0 +1,29 @@
+id: wordpress-cms-detection
+
+
+info:
+  name: wordpress-cms-detection
+  author: pwn3dexpl0it3r
+  severity: low
+  description: detects if target is running wordpress
+
+
+
+
+requests:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+    matchers-condition: or
+    matchers:
+      - type: word
+        words:
+          - "/wp-includes/"
+          - "/wp-admin/"
+          - "/wp-login.php"
+          - "/wp-content/"
+          - "/wp-json/"
+          - "/wp-content/plugins/"
+          - "/wp-content/themes/"
+          - "/wp-content/uploads/"
+          - "/wp-includes/js/"
