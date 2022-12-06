@@ -1,0 +1,26 @@
+id: firebase-api-key-exposure
+
+
+info:
+  name: firebase-api-key-leak
+  author: pwn3dexpl0it3r
+  severity: low
+  description: Searchs for firebase api keys getting leaked in the url u put
+
+
+requests:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "apiKey:"
+          - "authDomain:"
+          - "databaseURL:"
+          - "projectId:"
+          - "storageBucket:"
+          - "messagingSenderId:"
+          - "appId:"
+          - "measurementId:"
